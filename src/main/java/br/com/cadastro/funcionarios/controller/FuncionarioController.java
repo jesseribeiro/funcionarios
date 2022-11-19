@@ -45,6 +45,7 @@ public class FuncionarioController {
             URI uri = uriBuilder.path("/topicos/" + funcionarioDTO.getId()).build().toUri();
             return ResponseEntity.created(uri).body(funcionarioDTO);
         } catch (Exception e) {
+            log.info(e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -54,6 +55,7 @@ public class FuncionarioController {
         try {
             return ResponseEntity.ok(funcionarioService.update(id, dto));
         } catch (Exception e) {
+            log.info(e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -64,7 +66,7 @@ public class FuncionarioController {
             funcionarioService.delete(id);
             return ResponseEntity.ok("Funcionário excluído com sucesso!");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Não foi possível excluir " + e.getMessage());
+            return ResponseEntity.badRequest().body("Não foi possível excluir - " + e.getMessage());
         }
     }
 }
