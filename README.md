@@ -21,7 +21,7 @@ Comandos para compilar maven e executar:
 ## Swagger
 http://localhost:8080/swagger-ui/index.html#
 
-## endpoint
+## exemplo de endpoint
 POST /v1/funcionario/
 
 ## JSON request Body
