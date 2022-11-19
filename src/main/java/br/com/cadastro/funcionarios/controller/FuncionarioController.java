@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.net.URI;
 import java.util.List;
 
 @Slf4j
@@ -37,9 +39,11 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody @Valid @NotNull FuncionarioDTO dto) {
+    public ResponseEntity create(@RequestBody @Valid @NotNull FuncionarioDTO dto, UriComponentsBuilder uriBuilder) {
         try {
-            return ResponseEntity.ok(funcionarioService.salvar(dto));
+            FuncionarioDTO funcionarioDTO = funcionarioService.salvar(dto);
+            URI uri = uriBuilder.path("/topicos/" + funcionarioDTO.getId()).build().toUri();
+            return ResponseEntity.created(uri).body(funcionarioDTO);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
