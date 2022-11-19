@@ -22,10 +22,7 @@ public class FuncionarioService extends GenericService<FuncionarioBean, Funciona
     }
 
     public FuncionarioDTO getByIdDTO(Long id) {
-        FuncionarioBean funcionario = getById(id);
-        if (funcionario == null) {
-            throw new UsuarioInvalidoException();
-        }
+        FuncionarioBean funcionario = getRepository().findById(id).orElseThrow(() -> new UsuarioInvalidoException());
         return new FuncionarioDTO(funcionario);
     }
 
@@ -55,7 +52,7 @@ public class FuncionarioService extends GenericService<FuncionarioBean, Funciona
             throw new UsuarioInvalidoException();
         }
 
-        FuncionarioBean funcionario = getRepository().findById(id).get();
+        FuncionarioBean funcionario = getRepository().findById(id).orElseThrow(() -> new UsuarioInvalidoException());
 
         if (validacaoService.validaInformacao(dto.getEmail()) && !dto.getEmail().equalsIgnoreCase(funcionario.getEmail())) {
             validacaoService.validaEmail(dto.getEmail());
@@ -77,11 +74,7 @@ public class FuncionarioService extends GenericService<FuncionarioBean, Funciona
 
 
     public void delete(Long id) {
-        if (id == null) {
-            throw new UsuarioInvalidoException();
-        }
-
-        FuncionarioBean funcionario = getById(id);
+        FuncionarioBean funcionario = getRepository().findById(id).orElseThrow(() -> new UsuarioInvalidoException());
         delete(funcionario);
     }
 }
