@@ -51,7 +51,7 @@ public class FuncionarioController {
     }
 
     @PatchMapping(path = "/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody FuncionarioDTO dto) {
+    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody @Valid @NotNull FuncionarioDTO dto) {
         try {
             return ResponseEntity.ok(funcionarioService.update(id, dto));
         } catch (Exception e) {
