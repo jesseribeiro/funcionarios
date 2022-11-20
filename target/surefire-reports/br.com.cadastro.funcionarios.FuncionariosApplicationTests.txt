@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.cadastro.funcionarios.FuncionariosApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.87 s - in br.com.cadastro.funcionarios.FuncionariosApplicationTests

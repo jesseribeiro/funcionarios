@@ -7,6 +7,7 @@ br\com\cadastro\funcionarios\repository\GenericRepository.class
 br\com\cadastro\funcionarios\controller\FuncionarioController.class
 br\com\cadastro\funcionarios\service\FuncionarioService.class
 br\com\cadastro\funcionarios\bean\GenericBean.class
+br\com\cadastro\funcionarios\exception\HandleException.class
 br\com\cadastro\funcionarios\exception\UsuarioInvalidoException.class
 br\com\cadastro\funcionarios\FuncionariosApplication.class
 br\com\cadastro\funcionarios\service\ValidacaoService.class
