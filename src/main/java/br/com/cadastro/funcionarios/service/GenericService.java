@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class GenericService<T extends GenericBean, DAO extends CrudRepository<T,
     @Autowired
     private DAO repository;
 
-    public T save(T bean) {
+    public T save(@Valid T bean) {
         if(bean.getId() != null) {
             return update(bean);
         }
